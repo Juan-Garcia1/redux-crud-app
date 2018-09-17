@@ -1,3 +1,4 @@
+import axios from "axios"
 import {
   GET_TODOS,
   DELETE_TODO,
@@ -6,10 +7,17 @@ import {
   LOADING_TODOS
 } from "./types"
 
-export const getTodos = () => {
-  return {
-    type: GET_TODOS
-  }
+export const getTodos = () => dispatch => {
+  dispatch(setLoadingTodos())
+  axios.get("https://jsonplaceholder.typicode.com/todos").then(res =>
+    dispatch({
+      type: GET_TODOS,
+      payload: res.data
+    })
+  )
+  // return {
+  //   type: GET_TODOS
+  // }
 }
 
 export const addTodo = todoItem => {

@@ -30,6 +30,7 @@ export default function(state = initialState, action) {
     case GET_TODOS:
       return {
         ...state,
+        todos: action.payload,
         isLoading: false
       }
     case ADD_TODO:

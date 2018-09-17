@@ -31,20 +31,20 @@ class TodoItem extends Component {
 
   render() {
     // console.log(this.props)
-    const { task, id } = this.props
+    const { title, id } = this.props
     const { edit } = this.state
     return edit ? (
       <form onSubmit={this.editTask}>
         <input
           type="text"
-          defaultValue={task}
+          defaultValue={title}
           ref={editInput => (this.editInput = editInput)}
         />
         <button>Save</button>
       </form>
     ) : (
       <li style={{ margin: "20px auto" }}>
-        {task} - <button onClick={() => this.deleteTodo(id)}>X</button>
+        {title} - <button onClick={() => this.deleteTodo(id)}>X</button>
         <button onClick={this.toggleEdit}>Edit</button>
       </li>
     )
