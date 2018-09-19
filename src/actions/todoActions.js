@@ -35,11 +35,18 @@ export const editTodo = (id, todoItem) => {
   }
 }
 
-export const deleteTodo = id => {
-  return {
-    type: DELETE_TODO,
-    id
-  }
+export const deleteTodo = id => dispatch => {
+  axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+  .then(res => 
+    dispatch({
+      type: DELETE_TODO,
+      id
+    })
+  )
+  // return {
+  //   type: DELETE_TODO,
+  //   id
+  // }
 }
 
 export const setLoadingTodos = () => {
