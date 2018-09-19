@@ -20,11 +20,17 @@ export const getTodos = () => dispatch => {
   // }
 }
 
-export const addTodo = todoItem => {
-  return {
-    type: ADD_TODO,
-    todoItem
-  }
+export const addTodo = todoItem => dispatch => {
+  axios.post("https://jsonplaceholder.typicode.com/todos", todoItem).then(res =>
+    dispatch({
+      type: ADD_TODO,
+      payload: res.data
+    })
+  )
+  // return {
+  //   type: ADD_TODO,
+  //   todoItem
+  // }
 }
 
 export const editTodo = (id, todoItem) => {
@@ -36,8 +42,7 @@ export const editTodo = (id, todoItem) => {
 }
 
 export const deleteTodo = id => dispatch => {
-  axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-  .then(res => 
+  axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`).then(res =>
     dispatch({
       type: DELETE_TODO,
       id

@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { getTodos, addTodo, editTodo, deleteTodo } from "./actions/todoActions"
-import uuid from "uuid"
+// import uuid from "uuid"
 import TodoItem from "./components/TodoItem"
 
 class App extends Component {
@@ -25,14 +25,15 @@ class App extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const { task } = this.state
-    this.props.addTodo({ id: uuid(), task })
+    // will stop generating a new id after 201. will get error when deleting newly created task
+    this.props.addTodo({ title: task })
     this.setState({
       task: ""
     })
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     const { todos, isLoading } = this.props.todos
     const { task } = this.state
     if (isLoading) {
