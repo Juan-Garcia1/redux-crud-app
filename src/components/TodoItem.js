@@ -44,27 +44,11 @@ class TodoItem extends Component {
       </form>
     ) : (
       <li style={{ margin: "20px auto" }}>
-        {title} - <button onClick={() => this.deleteTodo(id)}>X</button>
+        {title} - <button onClick={() => this.deleteTodo(id)}>Delete</button>
         <button onClick={this.toggleEdit}>Edit</button>
       </li>
     )
   }
 }
 
-// const mapDispatchToProps = (dispatch) => ({
-//   editTodo: () => {
-//     dispatch({
-//       type:
-//       editTodo(id)
-//     })
-//   }
-// })
-
-// const mapStateToProps = state => {
-//   return {
-//     todos: state.todos
-//   }
-// }
-
-// export default connect(mapStateToProps)(TodoItem)
 export default TodoItem

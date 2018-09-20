@@ -12,7 +12,7 @@ export const getTodos = () => dispatch => {
   axios.get("https://jsonplaceholder.typicode.com/todos").then(res =>
     dispatch({
       type: GET_TODOS,
-      payload: res.data
+      payload: res.data.slice(0, 20)
     })
   )
   // return {
@@ -33,12 +33,19 @@ export const addTodo = todoItem => dispatch => {
   // }
 }
 
-export const editTodo = (id, todoItem) => {
-  return {
-    type: EDIT_TODO,
-    id,
-    todoItem
-  }
+export const editTodo = (id, todoItem) => dispatch => {
+  axios.patch(`https://jsonplaceholder.typicode.com/todos/${id}`).then(res =>
+    dispatch({
+      type: EDIT_TODO,
+      id,
+      todoItem
+    })
+  )
+  // return {
+  //   type: EDIT_TODO,
+  //   id,
+  //   todoItem
+  // }
 }
 
 export const deleteTodo = id => dispatch => {

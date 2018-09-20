@@ -5,23 +5,24 @@ import {
   EDIT_TODO,
   LOADING_TODOS
 } from "../actions/types"
-import uuid from "uuid"
+// import uuid from "uuid"
 
 const initialState = {
-  todos: [
-    {
-      id: uuid(),
-      task: "Workout"
-    },
-    {
-      id: uuid(),
-      task: "Buy groceries"
-    },
-    {
-      id: uuid(),
-      task: "Learn Redux"
-    }
-  ],
+  // todos: [
+  //   {
+  //     id: uuid(),
+  //     task: "Workout"
+  //   },
+  //   {
+  //     id: uuid(),
+  //     task: "Buy groceries"
+  //   },
+  //   {
+  //     id: uuid(),
+  //     task: "Learn Redux"
+  //   }
+  // ],
+  todos: [],
   isLoading: true
 }
 
@@ -43,8 +44,12 @@ export default function(state = initialState, action) {
         ...state,
         todos: state.todos.map(
           todo =>
-            todo.id === action.id ? { ...todo, task: action.todoItem } : todo
+            todo.id === action.id ? { ...todo, title: action.todoItem } : todo
         )
+        // todos: state.todos.map(
+        //   todo =>
+        //     todo.id === action.id ? { ...todo, title: action.todoItem } : todo
+        // )
       }
     case DELETE_TODO:
       return {
