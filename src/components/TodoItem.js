@@ -18,7 +18,6 @@ class TodoItem extends Component {
 
   editTask = e => {
     e.preventDefault()
-    // console.log(this.editInput.value)
     this.props.editTodo(this.props.id, this.editInput.value)
     this.setState({
       edit: false
@@ -30,7 +29,6 @@ class TodoItem extends Component {
   }
 
   render() {
-    // console.log(this.props)
     const { title, id } = this.props
     const { edit } = this.state
     return edit ? (
